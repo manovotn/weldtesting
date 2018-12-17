@@ -1,6 +1,5 @@
 package de.stga.weldtesting.alternative;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 
@@ -28,7 +27,7 @@ public class ManualWeldcontainer {
     @WeldSetup
     public WeldInitiator weldInitiator = WeldInitiator.from(WeldInitiator.createWeld().enableDiscovery())
             .addBeans(MockBean.builder().types(Fish.class).selectedAlternative().beanClass(Fish.class).create(c -> this.fishMock).build())
-            .activate(RequestScoped.class, SessionScoped.class).build();
+            .activate(SessionScoped.class).build();
 
     @Inject
     private FishTank classUnderTest;
