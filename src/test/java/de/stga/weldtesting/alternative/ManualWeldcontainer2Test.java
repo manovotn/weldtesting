@@ -16,7 +16,7 @@ import org.mockito.Mockito;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @ExtendWith(WeldJunit5Extension.class)
-public class ManualWeldcontainer2 {
+public class ManualWeldcontainer2Test {
 
     // Here the fish mock won`t overwrite the Fish class.
 

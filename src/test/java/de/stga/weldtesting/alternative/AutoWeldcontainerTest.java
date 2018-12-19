@@ -19,7 +19,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @ExtendWith(WeldJunit5AutoExtension.class)
 @AddBeanClasses({Fish.class, FishTank.class}) // Here I would need discovery on,
                                               // because of deltaspike libraries
-public class AutoWeldcontainer {
+public class AutoWeldcontainerTest {
 
     @Produces
     @OverrideBean

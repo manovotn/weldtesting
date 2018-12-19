@@ -18,15 +18,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 @ExtendWith(WeldJunit5Extension.class)
-public class ManualWeldcontainer {
+public class ManualWeldcontainerTest {
 
     // Here the fish mock won`t overwrite the Fish class.
     @Mock
     private Fish fishMock;
 
     @WeldSetup
-    public WeldInitiator weldInitiator = WeldInitiator.from(WeldInitiator.createWeld().enableDiscovery())
-            .addBeans(MockBean.builder().types(Fish.class).selectedAlternative().beanClass(Fish.class).create(c -> this.fishMock).build())
+    public WeldInitiator weldInitiator = WeldInitiator
+            .from(WeldInitiator.createWeld().enableDiscovery()).addBeans(MockBean.builder().types(Fish.class)
+                    .selectedAlternative().beanClass(Fish.class).create(c -> this.fishMock).build())
             .activate(SessionScoped.class).build();
 
     @Inject
