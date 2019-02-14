@@ -21,7 +21,10 @@ public class ManualWeldcontainer2Test {
     // Here the fish mock won`t overwrite the Fish class.
 
     @WeldSetup
-    public WeldInitiator weld = WeldInitiator.from(WeldInitiator.createWeld().enableDiscovery()).addBeans(createFishBean())
+    public WeldInitiator weld = WeldInitiator.from(WeldInitiator.createWeld().enableDiscovery()
+            .disableIsolation() // this is to enforce "flat" structure and merging of all beans.xml
+            .addBeanClass(Object.class)) // this is workaround for issue 64 - https://github.com/weld/weld-junit/issues/64
+            .addBeans(createFishBean())
             .activate(SessionScoped.class).build();
 
     @Inject
